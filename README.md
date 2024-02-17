@@ -22,6 +22,8 @@ Result:
 
 ```txt
 Running benches/my_benchmark.rs …
-combine_via_fold         time:   [… µs 162.11 …]
-combine_via_map_collect  time:   [… µs 336.00 …]
+combine_via_fold     time: [… µs 162.11 …]
+combine_via_collect  time: [… µs 336.00 …]
+combine_via_rayon    time: [… µs 308.28 …]
+
 ```
