@@ -2,12 +2,12 @@ use std::fmt::Write;
 use rand::{distributions::Alphanumeric, Rng};
 use rayon::prelude::*;
 
-/// Generate a random string of length 8
+/// Generate a random string of given length
 #[inline]
-pub fn random_item() -> String {
+pub fn random_string(length: usize) -> String {
     rand::thread_rng()
         .sample_iter(&Alphanumeric)
-        .take(8)
+        .take(length)
         .map(char::from)
         .collect()
 }
@@ -67,7 +67,8 @@ mod tests {
 
     #[test]
     fn implementations() {
-        let items = (0..10).map(|_| random_item()).collect();
+        let len = 8;
+        let items = (0..10).map(|_| random_string(len)).collect();
         let actual_0 = combine_via_fold(&items);
         let actual_1 = combine_via_collect(&items);
         let actual_2 = combine_via_rayon(&items);
